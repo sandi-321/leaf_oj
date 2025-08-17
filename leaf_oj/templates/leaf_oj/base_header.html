@@ -8,30 +8,11 @@
                 <li><a href="">竞赛</a></li>
                 <li><a href="">排名</a></li>
                 <li><a href="">讨论</a></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li class="login-btn"><a href="/login">登录/注册</a></li>
+                {% if user.is_authenticated %}
+                    <li style="position: absolute;right: 80px;top: 50%;transform: translateY(-50%);"><a>{{ user.username }}</a></li>
+                {% else %}
+                    <li class="login-btn"><a href="{%url 'leaf_oj:login'%}">登录/注册</a></li>
+                {% endif %}
             </ul>
         </nav>
     </div>
