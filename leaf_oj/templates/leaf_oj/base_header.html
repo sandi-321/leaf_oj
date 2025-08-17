@@ -1,0 +1,40 @@
+<header class="oj-header">
+    <div class="container">
+        <h1 class="logo">Leaf <span class="highlight">OJ</span></h1>
+        <nav class="main-nav">
+            <ul>
+                <li class="{% if request.path == '/' %}special-nav-item{% endif %}"><a href="{%url 'leaf_oj:index'%}">首页</a></li>
+                <li class="{% if request.path == '/problems' or request.path == '/problems/' %}special-nav-item{% endif %}"><a href="{%url 'leaf_oj:problems'%}">题库</a></li>
+                <li><a href="">竞赛</a></li>
+                <li><a href="">排名</a></li>
+                <li><a href="">讨论</a></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li class="login-btn"><a href="/login">登录/注册</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+{% block content %}{% endblock content %}

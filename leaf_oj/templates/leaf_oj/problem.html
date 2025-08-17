@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaf OJ | {{ problem.problem_id }} {{ problem.title }}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'leaf_oj/css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github.min.css">
+    <style>
+        
+    </style>
+</head>
+<body>
+    {% include 'leaf_oj/base_header.html' %}
+
+    <section class="problem-section">
+        <div class="container">
+            <div class="problem-detail-header">
+                <h1>{{ problem.title }}</h1>
+                <span class="difficulty easy">{{ problem.get_difficulty_display }}</span>
+            </div>
+            
+            <div class="problem-info-grid">
+                <div class="info-card">
+                    <h3>时间限制</h3>
+                    <p>{{ problem.time_limit }} ms</p>
+                </div>
+                <div class="info-card">
+                    <h3>内存限制</h3>
+                    <p>{{ problem.memory_limit }} MB</p>
+                </div>
+                <div class="info-card">
+                    <h3>提交次数</h3>
+                    <p>{{ problem.total_submissions }}</p>
+                </div>
+                <div class="info-card">
+                    <h3>通过率</h3>
+                    <p>
+                        {% if problem.total_submissions > 0 %}
+                            {{ problem.accepted_submissions|floatformat:0 }}%
+                        {% else %}
+                            N/A
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
+            
+            <div class="sections-card">
+                <h2 class="sections-title">题目描述</h2>
+                <div class="problem-content">
+                    {{ problem.description|safe }}
+                </div>
+            </div>
+            
+            <div class="sections-card">
+                <div class="example-grid">
+                    <div>
+                        <h2 class="section-title">输入格式</h2>
+                        <div class="example-card">{{ problem.input_description|safe }}</div>
+                    </div>
+                    <div>
+                        <h2 class="section-title">输出格式</h2>
+                        <div class="example-card">{{ problem.output_description|safe }}</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sections-card">
+                <h2 class="section-title">样例</h2>
+                <div class="example-grid" style="margin-top: 0.5rem;">
+                    <div>
+                        <h4>输入</h4>
+                        <div class="example-card">{{ problem.sample_input|safe }}</div>
+                    </div>
+                    <div>
+                        <h4>输出</h4>
+                        <div class="example-card">{{ problem.sample_output|safe }}</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sections-card">
+                <h2 class="section-title">提交解答</h2>
+            </div>
+        </div>
+    </section>
+
+    {% include 'leaf_oj/base_footer.html' %}
+</body>
+</html>

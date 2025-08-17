@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaf OJ | 首页</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'leaf_oj/css/style.css' %}">
+</head>
+<body>
+    {% include 'leaf_oj/base_header.html' %}
+
+    {% block content%}
+    <section id="hero" class="hero">
+        <div class="section-title">
+            <h2>欢迎来到<h2 class="logo">Leaf <span class="highlight">OJ</span>
+        </div>
+    </section>
+
+    <section id="contests" class="contest-section">
+        <div class="container">
+            <h2 class="section-title">近期竞赛</h2>
+            <div class="contest-list">
+                <div class="contest-card">
+                    <div class="contest-status upcoming">即将开始</div>
+                    <h3>测试</h3>
+                    <p>1 小时 • 3 道题 • OI</p>
+                    <div class="contest-meta">
+                        <span>开始: 2天后</span>
+                        <span>0人报名</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endblock content%}
+
+    {% include 'leaf_oj/base_footer.html' %}
+</body>
+</html>
