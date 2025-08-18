@@ -9,7 +9,12 @@
                 <li><a href="">排名</a></li>
                 <li><a href="">讨论</a></li>
                 {% if user.is_authenticated %}
-                    <li style="position: absolute;right: 20px;top: 50%;transform: translateY(-50%);"><a a href="">{{ user.username }}</a></li>
+                    <div class="user-panel">
+                        <li style="position: absolute;right: 20px;top: 50%;transform: translateY(-50%);cursor: pointer;"><a a href="">{{ user.username }}</a></li>
+                        <div class="dropdown-menu">
+                            <button class="logout-btn">登出</button>
+                        </div>
+                    </div>
                 {% else %}
                     <li class="login-btn"><a href="{%url 'leaf_oj:login'%}">登录/注册</a></li>
                 {% endif %}
@@ -18,4 +23,4 @@
     </div>
 </header>
 
-{% block content %}{% endblock content %}
+<main>{% block content %}{% endblock content %}</main>

@@ -8,70 +8,72 @@
     <link rel="stylesheet" href="{% static 'leaf_oj/css/style.css' %}">
 </head>
 <body>
-    {% include 'leaf_oj/base_header.html' %}
+    <div class="containers">
+        {% include 'leaf_oj/base_header.html' %}
 
-    {% block content%}
-    <section class="problem-section">
-        <div class="container">
-            <div class="problem-header">
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <h2 class="section-title">题目列表</h2>
+        {% block content%}
+        <section class="problem-section">
+            <div class="container">
+                <div class="problem-header">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <h2 class="section-title">题目列表</h2>
+                    </div>
+                </div>
+                
+                <table class="problem-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 120px;">状态</th>
+                            <th style="width: 120px;">题目编号</th>
+                            <th>题目名称</th>
+                            <th style="width: 120px;">尝试人数</th>
+                            <th style="width: 120px;">AC人数</th>
+                            <th style="width: 120px;">难度</th>
+                        </tr>
+                    </thead>
+                    {% for problem in problems %}
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <span class="status-icon status-not-attempted"></span>
+                                    未完成
+                                </td>
+                                <td>
+                                    <b>{{ problem.problem_id }}</b>
+                                </td>
+                                <td class="problem-title">
+                                    <a href="{% url 'leaf_oj:problem' problem.problem_id %}">{{ problem.title }}</a>
+                                </td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td><span class="difficulty easy">{{ problem.get_difficulty_display }}</span></td>
+                            </tr>
+                        </tbody>
+                    {% empty %}
+                        <tbody>
+                            <td></td>
+                            <td></td>
+                            <td><h2 style="text-align: center;transform: translateX(60px);">还没有题目呢!</h2></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tbody>
+                    {% endfor %}
+                </table>
+                
+                <div class="pagination">
+                    <button disabled>上一页</button>
+                    <button class="active">1</button>
+                    <button disabled>下一页</button>
                 </div>
             </div>
-            
-            <table class="problem-table">
-                <thead>
-                    <tr>
-                        <th style="width: 120px;">状态</th>
-                        <th style="width: 120px;">题目编号</th>
-                        <th>题目名称</th>
-                        <th style="width: 120px;">尝试人数</th>
-                        <th style="width: 120px;">AC人数</th>
-                        <th style="width: 120px;">难度</th>
-                    </tr>
-                </thead>
-                {% for problem in problems %}
-                    <tbody>
-                        <tr>
-                            <td>
-                                <span class="status-icon status-not-attempted"></span>
-                                未完成
-                            </td>
-                            <td>
-                                <b>{{ problem.problem_id }}</b>
-                            </td>
-                            <td class="problem-title">
-                                <a href="{% url 'leaf_oj:problem' problem.problem_id %}">{{ problem.title }}</a>
-                            </td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td><span class="difficulty easy">{{ problem.get_difficulty_display }}</span></td>
-                        </tr>
-                    </tbody>
-                {% empty %}
-                    <tbody>
-                        <td></td>
-                        <td></td>
-                        <td><h2 style="text-align: center;transform: translateX(60px);">还没有题目呢!</h2></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tbody>
-                {% endfor %}
-            </table>
-            
-            <div class="pagination">
-                <button disabled>上一页</button>
-                <button class="active">1</button>
-                <button disabled>下一页</button>
-            </div>
-        </div>
-    </section>
-    {% endblock content%}
+        </section>
+        {% endblock content%}
 
-    {% include 'leaf_oj/base_footer.html' %}
-    
-    <!-- Font Awesome 图标库 -->
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+        {% include 'leaf_oj/base_footer.html' %}
+
+        <!-- Font Awesome 图标库 -->
+        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    </div>
 </body>
 </html>
