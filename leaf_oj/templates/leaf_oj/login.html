@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaf OJ | 登录</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'leaf_oj/css/style.css' %}">
+</head>
+<body>
+    {% include 'leaf_oj/base_header.html' %}
+
+    {% block content%}
+    <section class="problem-section">
+        <div class="container">
+            <div class="problem-detail-header">
+                <h2>用户登录</h2>
+            </div>
+
+            <div class="sections-card">
+                <form method="post" action="{% url 'leaf_oj:login' %}">
+                    {% csrf_token %}
+                    
+                    <div class="mb-3">
+                        <label for="id_username" class="form-label">
+                            <i class="input-label"></i>用户名
+                        </label>
+                        <input type="text" name="username" class="form-control form-control-lg" id="id_username" required autofocus>
+                        <span class="underline"></span>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="id_password" class="form-label">
+                            <i class="input-label"></i>密码
+                        </label>
+                        <input type="password" name="password" class="form-control form-control-lg" id="id_password" required>
+                        <span class="underline"></span>
+                    </div>
+                    
+                    <div class="d-grid mb-3">
+                        <button class="btn btn-primary btn-lg" type="submit">
+                            <i class="bi bi-box-arrow-in-right me-2"></i>登录
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    {% if form.errors %}
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                Swal.fire({
+                    icon: 'error',
+                    title: '登录失败',
+                    text: '用户名或密码错误',
+                    confirmButtonText: '重新输入',
+                    backdrop: 'rgba(0,0,0,0.7)',
+                    customClass: {
+                    popup: 'custom-swal-popup'
+                }
+                }).then(() => {
+                    document.getElementById('id_username').focus();
+                });
+            });
+        </script>
+    {% endif %}
+    {% endblock content%}
+
+    {% include 'leaf_oj/base_footer.html' %}
+</body>
+</html>
