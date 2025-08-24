@@ -7,4 +7,5 @@ urlpatterns = [
     re_path(r'^problems/?$', views.problems_view, name='problems'),
     re_path(r'^problems/(?P<problem_id>P\d+)/?$', views.problem_view, name='problem'),
     re_path(r'^login/?$', views.login_view, name='login'),
+    re_path(r'^logout/?$', views.logout_view, name='logout'),
 ]

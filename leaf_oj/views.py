@@ -1,9 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Problem
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import authenticate, login
-from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from .models import *
 
@@ -45,3 +43,7 @@ def login_view(request):
         next_url = request.GET.get('next', '')
 
     return render(request, 'leaf_oj/login.html', {'form': form,})
+
+def logout_view(request):
+    logout(request)
+    return redirect('leaf_oj:index')

@@ -12,7 +12,7 @@
                     <div class="user-panel">
                         <li style="position: absolute;right: 20px;top: 50%;transform: translateY(-50%);cursor: pointer;"><a a href="">{{ user.username }}</a></li>
                         <div class="dropdown-menu">
-                            <button class="logout-btn">登出</button>
+                            <button class="logout-btn"><a style="color: black;" href="{%url 'leaf_oj:logout'%}">登出</a></button>
                         </div>
                     </div>
                 {% else %}
